@@ -270,31 +270,60 @@ public
     return implicitCallTargets;
   }
 
+  public class Identifier {
+    public String _package;
+    public String _class;
+    public String _method;
+
+    public Identifier(String _package, String _class, String _method) {
+      this._package = _package;
+      this._class = _class;
+      this._method = _method;
+    }
+
+    // TODO: remove
+    public String getJSON() {
+      return "{ \"package\": \"" + _package + "\", \"class\": \"" + _class + "\", \"method\": \"" + _method + "\" }";
+    }
+  }
+
   /*
    * @return The signature of the invocation target.
    */
-  syn lazy String InvocationTarget.targetSignature() =
-      (program().mergeNames
-           ? ""
-           : hostType().packageName() + "." + hostType().name()) +
-      "::" + (program().mergeNames ? name() : fullSignature());
-  eq MethodDecl.targetSignature() {
-    String signature = "";
-    String anonymous = "";
-    if (hostType() instanceof AnonymousDecl) {
-      anonymous = "." + hashCode();
-    }
-    signature = (program().mergeNames ? ""
-                                      : hostType().packageName() + "." +
-                                            hostType().name() + anonymous) +
-                "::" + (program().mergeNames ? name() : fullSignature());
-    return signature;
-  }
-  eq StaticInitializer.targetSignature() =
-      hostType().packageName() + "." + hostType().name() + "::clinit<>";
-  eq InstanceInitializer.targetSignature() =
-      hostType().packageName() + "." + hostType().name() + "::init<>";
+  syn lazy Identifier InvocationTarget.targetSignature() =
+    new Identifier(
+      hostType().packageName(),
+      hostType().name(),
+      name()
+    );
 
+  eq MethodDecl.targetSignature() {
+    String anon = "";
+    if (hostType() instanceof AnonymousDecl) {
+      anon = "." + hashCode();
+    }
+
+    return new Identifier(
+      hostType().packageName(),
+      hostType().name() + anon,
+      name()
+    );
+  }
+
+  eq StaticInitializer.targetSignature() =
+    new Identifier(
+      hostType().packageName(),
+      hostType().name(),
+      "clinit<>"
+    );
+
+  eq InstanceInitializer.targetSignature() =
+    new Identifier(
+      hostType().packageName(),
+      hostType().name(),
+      "init<>"
+    );
+    
   /** Method signature, including type arguments.  */
   syn lazy String ConstructorDecl.fullSignature() {
     StringBuilder sb = new StringBuilder();
@@ -493,6 +522,11 @@ public
   eq MethodDecl.isDeclaredStatic() = isStatic();
   syn lazy boolean InvocationTarget.isDeclaredPrivate() = false;
   eq MethodDecl.isDeclaredPrivate() = isPrivate();
+  syn lazy boolean InvocationTarget.isDeclaredProtected() = false;
+  eq MethodDecl.isDeclaredProtected() = isProtected();
+  syn lazy boolean InvocationTarget.isDeclaredPublic() = false;
+  eq MethodDecl.isDeclaredPublic() = isPublic();
+
   syn lazy boolean InvocationTarget.isConstructorDeclaration() = false;
   eq ConstructorDecl.isConstructorDeclaration() = true;
   syn lazy boolean InvocationTarget.isStaticInitializerDeclration() = false;
@@ -500,46 +534,44 @@ public
   syn lazy boolean InvocationTarget.isInstanceInitializerDeclration() = false;
   eq InstanceInitializer.isInstanceInitializerDeclration() = true;
 
-  syn lazy java.util.List<String> InvocationTarget.getKindOfAttribute() {
-    java.util.List<String> kinds = new ArrayList<String>();
-    if (isSynAttribute()) {
-      kinds.add("syn");
-    }
-    if (isInhAttribute()) {
-      kinds.add("inh");
-    }
-    if (isCircularAttribute()) {
-      kinds.add("circular");
-    }
-    if (isCollectionAttribute()) {
-      kinds.add("collection");
-    }
+  syn lazy String InvocationTarget.visibility() {
     if (isDeclaredStatic()) {
-      kinds.add("static");
+      return "static";
     }
+
     if (isDeclaredPrivate()) {
-      kinds.add("private");
+      return "private";
     }
+
+    if (isDeclaredProtected()) {
+      return "protected";
+    }
+
+    if (isDeclaredPublic()) {
+      return "public";
+    }
+
+    // Implicit public
+    return "public";
+  }
+
+  syn lazy String InvocationTarget.kind() {
     if (isConstructorDeclaration()) {
-      kinds.add("constructor");
+      return "constructor";
     }
 
     if (isInstanceInitializerDeclration()) {
-      kinds.add("instance-initializer");
+      return "instance-initializer";
     }
 
     if (isStaticInitializerDeclration()) {
-      kinds.add("static-initializer");
+      return "static-initializer";
     }
 
-    if (kinds.isEmpty()) {
-      if (this == entryPoint()) {
-        kinds.add("entry-point");
-      } else {
-        kinds.add("method");
-      }
+    if (this == entryPoint()) {
+      return "entry-point";
     }
 
-    return kinds;
+    return "method";
   }
 }

@@ -61,6 +61,7 @@ import java.util.TreeSet;
 import org.extendj.ast.CompilationUnit;
 import org.extendj.ast.Frontend;
 import org.extendj.ast.Program;
+import com.google.gson.*;
 
 /**
  * Perform static semantic checks on a Java program.
@@ -77,7 +78,6 @@ public class Cat extends Frontend {
   public static Object DrAST_root_node;
   public static boolean vscode = false;
   public static boolean forward = true;
-  ;
 
   private String[] setEnv(String[] args) throws FileNotFoundException {
     if (args.length < 1) {
@@ -152,59 +152,38 @@ public class Cat extends Frontend {
    * Entry point for the Java checker.
    * @param args command-line arguments
    */
-  public static void main(String args[])
+  public static void main(String[] args)
       throws FileNotFoundException, InterruptedException, IOException {
-    Cat cat = new Cat();
-    String[] jCheckerArgs = cat.setEnv(args);
-    Program root = cat.getEntryPoint();
-    root.attributesOnly = cat.getConsiderOnlyAttributes();
-    root.mergeNames = cat.getMergeNames();
-    root.entryPointPackage = cat.getEntryPointPackage();
-    root.entryPointMethod = cat.getEntryPointMethod();
-    int exitCode = cat.run(jCheckerArgs);
-    DrAST_root_node = root;
+    
+    System.out.println("Starting Cat server...");
+    port(8080);
+    
+    get("/callgraph", (_req, res) -> {
+      Gson json = new Gson();
+      CallgraphRequest req = json.fromJson(_req.body(), CallgraphRequest.class);
+      log("Generating call graph...");
 
-    if (allMethods) {
-      System.out.println(cat.getEntryPoint().allMethodsToJson());
-      System.exit(0);
-    }
-    if (vscode) {
-      root.callGraph2JSON(System.out, forward);
-      System.exit(exitCode);
-    }
-    // String callgraphJson = cg.toJson();
-    if (cat.getSaveCallGraph()) {
-      File file = new File(cat.getCallGraphPath());
-      PrintStream out = new PrintStream(new FileOutputStream(file));
-      // out.println(callgraphJson);
-      root.callGraph2JSON(out, forward);
-      out.close();
-      log("Call graph saved to " + cat.getCallGraphPath());
-    }
+      Cat cat = new Cat();
+      Program root = cat.getEntryPoint();
+      root.entryPointMethod = req.entryMethod;
+      root.entryPointPackage = req.entryPackage;
+      
+      int exitCode = cat.run(req.getCompilerArgs());
 
-    if (cat.getVisualiseCallGraph()) {
-      log("You can visualize the call graph at http://localhost:8080/index.html");
-      staticFiles.location("/public");
-      port(8080);
-      get("/getCallgraphData", (req, res) -> {
-        try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
-             PrintStream out = new PrintStream(baos)) {
-          root.callGraph2JSON(
-              out, true); // Inefficient. Recomputing the callgraph twice.
-          return baos.toString();
-        } catch (IOException e) {
-          // Handle IOException if necessary
-          e.printStackTrace();
-          return "Error generating JSON";
-        }
-      });
-    }
+      ByteArrayOutputStream baos = new ByteArrayOutputStream();
+      PrintStream out = new PrintStream(baos);
+
+      root.callGraph2JSON(out, true);
+      return baos.toString();
+    });
+
+    log("Listening on port " + port());
   }
 
   /**
    * Initialize the Java checker.
    */
-  public Cat() { super("Cat", ExtendJVersion.getVersion()); }
+  public Cat() { super("Cat Server", ExtendJVersion.getVersion()); }
 
   /**
    * @param args command-line arguments
@@ -233,20 +212,18 @@ public class Cat extends Frontend {
 
   @Override
   protected String name() {
-    return "Cat";
+    return "Cat Server";
   }
 
   @Override
   protected String version() {
-    return "CAT2023";
+    return "CAT-SERVER-2024";
   }
 
   public Program getEntryPoint() { return program; }
 
   private static void log(String message) {
-    if (!vscode) {
-      System.out.println("\u001B[33m[INFO]\u001B[0m: " + message);
-    }
+    System.out.println("\u001B[33m[INFO]\u001B[0m: " + message);
   }
 
   private void printOptionsUsage() {

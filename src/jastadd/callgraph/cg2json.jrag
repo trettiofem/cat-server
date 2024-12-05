@@ -99,14 +99,10 @@ public
 
 public
   void InvocationTarget.nodes2JSON(PrintStream out) {
-
-    out.println("      \"methodName\": \"" + targetSignature() + "\",");
-    out.println("      \"sccId\": " + getSCCID() + ",");
-    out.println("      \"uniqueSCCAndNoSelfLoop\": " + !inSCC() + ",");
-    out.println("      \"path\": \"" + enclosingCompilationUnit().pathName() +
-                ":" + getLine(getStart()) + "\",");
-    out.println("      \"bridge\": false,");
-    out.println("      \"paramTypes\": {");
+    out.println("      \"id\": " + targetSignature().getJSON() + ",");
+    out.println("      \"path\": \"" + enclosingCompilationUnit().pathName() + "\",");
+    out.println("      \"line\": " + getLine(getStart()) + ",");
+    out.println("      \"params\": {");
     boolean isFirstParam = true;
     for (Map.Entry<String, String> entry : paramTypes().entrySet()) {
       if (!isFirstParam) {
@@ -120,12 +116,8 @@ public
       isFirstParam = false;
     }
     out.print("\n      },\n");
-    out.println("      \"kind\": [");
-    for (int i = 0; i < getKindOfAttribute().size(); i++) {
-      out.println("        \"" + getKindOfAttribute().get(i) + "\"" +
-                  (i < getKindOfAttribute().size() - 1 ? "," : ""));
-    }
-    out.println("      ]");
+    out.println("      \"kind\": \"" + kind() + "\",");
+    out.println("      \"visibility\": \"" + visibility() + "\"");
   }
 public
   void InvocationTarget.edges2JSON(PrintStream out, boolean first,
@@ -135,8 +127,8 @@ public
       if (first) {
         first = false;
       }
-      out.println("      \"source\": \"" + targetSignature() + "\",");
-      out.println("      \"target\": \"" + neighbor.targetSignature() + "\"");
+      out.println("      \"source\": " + targetSignature().getJSON() + ",");
+      out.println("      \"target\": " + neighbor.targetSignature().getJSON() + "");
       out.println("    }");
     }
   }

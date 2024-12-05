@@ -68,8 +68,7 @@ public
   syn String InvocationTarget.methodName() {
     String res = "";
     try {
-      res = targetSignature().substring(targetSignature().indexOf("::") + 2,
-                                        targetSignature().indexOf("("));
+      res = targetSignature()._method;
     } catch (Exception e) {
     }
     return res;

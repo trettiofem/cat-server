@@ -1,0 +1,239 @@
+{
+  "nodes": [
+    {
+      "id": ".Example::main()",
+      "path": "example/Example.java",
+      "line": 4,
+      "params": {
+
+      },
+      "kind": "entry-point",
+      "visibility": "public"
+    },
+    {
+      "id": ".H::H()",
+      "path": "example/Example.java",
+      "line": 0,
+      "params": {
+
+      },
+      "kind": "constructor",
+      "visibility": "public"
+    },
+    {
+      "id": ".F::F()",
+      "path": "example/Example.java",
+      "line": 0,
+      "params": {
+
+      },
+      "kind": "constructor",
+      "visibility": "public"
+    },
+    {
+      "id": ".C::C()",
+      "path": "example/Example.java",
+      "line": 0,
+      "params": {
+
+      },
+      "kind": "constructor",
+      "visibility": "public"
+    },
+    {
+      "id": ".A::A()",
+      "path": "example/Example.java",
+      "line": 0,
+      "params": {
+
+      },
+      "kind": "constructor",
+      "visibility": "public"
+    },
+    {
+      "id": "java.lang.Object::<init>()",
+      "path": "jrt:/java.base/java/lang/Object.class",
+      "line": 0,
+      "params": {
+
+      },
+      "kind": "constructor",
+      "visibility": "public"
+    },
+    {
+      "id": ".C::clinit<>",
+      "path": "example/Example.java",
+      "line": 51,
+      "params": {
+
+      },
+      "kind": "static-initializer",
+      "visibility": "public"
+    },
+    {
+      "id": ".G::G()",
+      "path": "example/Example.java",
+      "line": 0,
+      "params": {
+
+      },
+      "kind": "constructor",
+      "visibility": "public"
+    },
+    {
+      "id": ".C::m()",
+      "path": "example/Example.java",
+      "line": 52,
+      "params": {
+
+      },
+      "kind": "method",
+      "visibility": "public"
+    },
+    {
+      "id": ".E::m()",
+      "path": "example/Example.java",
+      "line": 42,
+      "params": {
+
+      },
+      "kind": "method",
+      "visibility": "public"
+    },
+    {
+      "id": ".A::m()",
+      "path": "example/Example.java",
+      "line": 64,
+      "params": {
+
+      },
+      "kind": "method",
+      "visibility": "public"
+    },
+    {
+      "id": ".A::hello(java.lang.String, int)",
+      "path": "example/Example.java",
+      "line": 72,
+      "params": {
+        "a": "String",
+        "b": "int"
+      },
+      "kind": "method",
+      "visibility": "public"
+    },
+    {
+      "id": ".B::m()",
+      "path": "example/Example.java",
+      "line": 58,
+      "params": {
+
+      },
+      "kind": "method",
+      "visibility": "public"
+    },
+    {
+      "id": ".Example::bruh1()",
+      "path": "example/Example.java",
+      "line": 14,
+      "params": {
+
+      },
+      "kind": "method",
+      "visibility": "public"
+    },
+    {
+      "id": ".Example::bruh2()",
+      "path": "example/Example.java",
+      "line": 18,
+      "params": {
+
+      },
+      "kind": "method",
+      "visibility": "public"
+    },
+    {
+      "id": ".Example::bruh3()",
+      "path": "example/Example.java",
+      "line": 22,
+      "params": {
+
+      },
+      "kind": "method",
+      "visibility": "public"
+    }
+  ],
+  "edges": [
+        {
+      "source": ".Example::main()",
+      "target": ".H::H()"
+    }
+   ,    {
+      "source": ".Example::main()",
+      "target": ".C::m()"
+    }
+   ,    {
+      "source": ".Example::main()",
+      "target": ".E::m()"
+    }
+   ,    {
+      "source": ".Example::main()",
+      "target": ".C::C()"
+    }
+   ,    {
+      "source": ".Example::main()",
+      "target": ".A::m()"
+    }
+   ,    {
+      "source": ".Example::main()",
+      "target": ".B::m()"
+    }
+   ,    {
+      "source": ".Example::main()",
+      "target": ".Example::bruh1()"
+    }
+   ,    {
+      "source": ".H::H()",
+      "target": ".F::F()"
+    }
+   ,    {
+      "source": ".F::F()",
+      "target": ".C::C()"
+    }
+   ,    {
+      "source": ".C::C()",
+      "target": ".A::A()"
+    }
+   ,    {
+      "source": ".C::C()",
+      "target": ".C::clinit<>"
+    }
+   ,    {
+      "source": ".A::A()",
+      "target": "java.lang.Object::<init>()"
+    }
+   ,    {
+      "source": ".C::clinit<>",
+      "target": ".G::G()"
+    }
+   ,    {
+      "source": ".G::G()",
+      "target": ".F::F()"
+    }
+   ,    {
+      "source": ".A::m()",
+      "target": ".A::hello(java.lang.String, int)"
+    }
+   ,    {
+      "source": ".Example::bruh1()",
+      "target": ".Example::bruh2()"
+    }
+   ,    {
+      "source": ".Example::bruh2()",
+      "target": ".Example::bruh3()"
+    }
+   ,    {
+      "source": ".Example::bruh3()",
+      "target": ".Example::bruh1()"
+    }
+  ]
+}
