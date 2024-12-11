@@ -178,6 +178,10 @@ public class Cat extends Frontend {
       return baos.toString();
     });
 
+    get("/status", (req, res) -> {
+      return "{ \"status\": \"ok\" }";
+    });
+
     log("Listening on port " + port());
   }
 
