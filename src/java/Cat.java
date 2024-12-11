@@ -157,18 +157,19 @@ public class Cat extends Frontend {
     
     System.out.println("Starting Cat server...");
     port(8080);
-    
+
     get("/callgraph", (_req, res) -> {
       Gson json = new Gson();
       CallgraphRequest req = json.fromJson(_req.body(), CallgraphRequest.class);
       log("Generating call graph...");
 
       Cat cat = new Cat();
-      Program root = cat.getEntryPoint();
-      root.entryPointMethod = req.entryMethod;
-      root.entryPointPackage = req.entryPackage;
       
       int exitCode = cat.run(req.getCompilerArgs());
+      
+      Program root = cat.getEntryPoint(); 
+      root.entryPointMethod = req.entryMethod;
+      root.entryPointPackage = req.entryPackage;
 
       ByteArrayOutputStream baos = new ByteArrayOutputStream();
       PrintStream out = new PrintStream(baos);

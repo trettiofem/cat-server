@@ -294,7 +294,7 @@ public
     new Identifier(
       hostType().packageName(),
       hostType().name(),
-      name()
+      fullSignature()
     );
 
   eq MethodDecl.targetSignature() {
@@ -306,7 +306,7 @@ public
     return new Identifier(
       hostType().packageName(),
       hostType().name() + anon,
-      name()
+      fullSignature()
     );
   }
 

@@ -7,5 +7,6 @@ public class Shelter {
         System.out.println(dog.noise());
 
         dog.hello();
+        dog.hello(1);
     }
 }

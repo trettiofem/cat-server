@@ -6,4 +6,8 @@ public abstract class Animal {
     public void hello() {
         System.out.println("Hello, World!");
     }
+
+    public void hello(int a) {
+        
+    }
 }
