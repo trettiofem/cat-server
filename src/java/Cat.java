@@ -158,7 +158,7 @@ public class Cat extends Frontend {
     System.out.println("Starting Cat server...");
     port(8080);
 
-    get("/callgraph", (_req, res) -> {
+    post("/callgraph", (_req, res) -> {
       Gson json = new Gson();
       CallgraphRequest req = json.fromJson(_req.body(), CallgraphRequest.class);
       log("Generating call graph...");
@@ -184,7 +184,7 @@ public class Cat extends Frontend {
 
     log("Listening on port " + port());
   }
-
+  
   /**
    * Initialize the Java checker.
    */
