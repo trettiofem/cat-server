@@ -38,9 +38,12 @@ aspect CG2JSON {
 public
   void Program.callGraph2JSON(PrintStream out, boolean forward) {
     InvocationTarget entryPoint =
-        getTarget(entryPointPackage, entryPointMethod);
+      getTarget(entryPointPackage, entryPointMethod);
+      
     out.println("{");
-    out.println("  \"nodes\": [");
+    out.println("  \"status\": \"ok\",");
+    out.println("  \"data\": {");
+    out.println("    \"nodes\": [");
     ArrayList<InvocationTarget> all = new ArrayList<InvocationTarget>();
     if (forward)
       completeCallGraph(entryPoint, new HashSet<InvocationTarget>(), all);
@@ -54,14 +57,15 @@ public
       out.println("    }" + (i < all.size() - 1 ? "," : ""));
     }
 
-    out.println("  ],");
-    out.println("  \"edges\": [");
+    out.println("    ],");
+    out.println("    \"edges\": [");
     boolean first = true;
     for (InvocationTarget target : all) {
       target.edges2JSON(out, first, forward);
       first = false;
     }
-    out.println("  ]");
+    out.println("    ]");
+    out.println("  }");
     out.println("}");
   }
 

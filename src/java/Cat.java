@@ -159,27 +159,34 @@ public class Cat extends Frontend {
     port(8080);
 
     post("/callgraph", (_req, res) -> {
-      Gson json = new Gson();
-      CallgraphRequest req = json.fromJson(_req.body(), CallgraphRequest.class);
-      log("Generating call graph...");
+      try {
+        Gson json = new Gson();
+        CallgraphRequest req = json.fromJson(_req.body(), CallgraphRequest.class);
+        log("Generating call graph...");
 
-      Cat cat = new Cat();
-      
-      int exitCode = cat.run(req.getCompilerArgs());
-      
-      Program root = cat.getEntryPoint(); 
-      root.entryPointMethod = req.entryMethod;
-      root.entryPointPackage = req.entryPackage;
+        // TODO: check req for errors (no files, no entry...)
 
-      ByteArrayOutputStream baos = new ByteArrayOutputStream();
-      PrintStream out = new PrintStream(baos);
+        Cat cat = new Cat();
 
-      root.callGraph2JSON(out, true);
-      return baos.toString();
+        int exitCode = cat.run(req.getCompilerArgs());
+
+        Program root = cat.getEntryPoint(); 
+        root.entryPointMethod = req.entryMethod;
+        root.entryPointPackage = req.entryPackage;
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream out = new PrintStream(baos);
+
+        root.callGraph2JSON(out, true);
+        return baos.toString();
+      } catch (Exception e) {
+        System.out.println(e);
+        return "{ \"status\": \"error\", \"message\": \"" + e.toString() + "\" }";
+      }
     });
 
-    get("/status", (req, res) -> {
-      return "{ \"status\": \"ok\" }";
+    post("/status", (req, res) -> {
+      return "{ \"status\": \"ok\", \"data\": 0 }";
     });
 
     log("Listening on port " + port());

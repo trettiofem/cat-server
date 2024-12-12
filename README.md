@@ -1,8 +1,6 @@
 # CAT - CallGraph Analysis Tool
 
-<p align="center">
-  <img width="300"  src="https://raw.githubusercontent.com/idrissrio/cat/main/resources/cat.png">
-</p>
+![Banner](res/banner.png)
 
 CAT (CallGraph Analysis Tool) is a Java tool that constructs call graphs based 
 on Class Hierarchy Analaysis and a variant of Rapid Type Analysis. It uses JastAdd and reference attribute 
@@ -59,16 +57,17 @@ git submodule update --init --recursive
 
 CAT is designed to be user-friendly and easy to use. Here's how you can use it:
 
-1. Generate a call graph for a Java program.
+Generate a call graph for a Java program.
 ```bash
-java -jar cat.jar <path-to-java-program> -o <output-file> -entryPoint <package-name>.<class-name> <method-name>
+java -jar cat.jar 
 ```
 
-2. Visualise the generated call graph.
+## Test 
+Clone CAT-server and use the gradle test suite with 
 ```bash
-java -jar cat.jar <path-to-java-program> -visualise -entryPoint <package-name>.<class-name> <method-name>
+./gradlew test
 ```
-Navigate to `http://localhost:8080` to view the visualisation.
+
 
 ## Examples
 
@@ -136,32 +135,15 @@ java -jar cat.jar ~/Example.java -o ~/Example.json -entryPoint Example main
 
 This will generate a call graph in JSON format and save it in a file called ~/Example.json.
 
-To visualise the generated call graph, we can run the following command:
-
-```bash
-java -jar cat.jar ~/Example.java  -entryPoint Example main --visualise
-```
-
-By visiting `http://localhost:8080` in a web browser, we can view the visualisation of the generated call graph.
-
-<p align="center">
-  <img  src="https://raw.githubusercontent.com/idrissrio/cat/main/resources/CallGraphVisualisation.png">
-</p>
-
-The user can choose to view the call graph in different formats, such as a tree or a graph
-by clicking on the settings icon in the top left corner of the visualisation.
 
 ## Contributing
 
-We welcome contributions to CAT! If you'd like to contribute, please follow these steps:
+We welcome contributions to CAT-server! If you'd like to contribute, please follow these steps:
 
-1. Fork the CAT repository.
+1. Fork the CAT-server repository.
 2. Create a new branch for your feature/fix: git checkout -b feature/your-feature.
 3. Commit your changes and push to your forked repository.
 4. Create a pull request detailing your changes.
 
 ## License
-CAT is released under the BSD 3-Clause License.
-
-
-
+CAT-server is released under the BSD 3-Clause License.
