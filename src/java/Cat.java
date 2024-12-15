@@ -58,6 +58,9 @@ import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
+
+import org.extendj.ExtendJVersion;
+import org.extendj.JavaChecker;
 import org.extendj.ast.CompilationUnit;
 import org.extendj.ast.Frontend;
 import org.extendj.ast.Program;
@@ -155,6 +158,7 @@ public class Cat extends Frontend {
   public static void main(String[] args)
       throws FileNotFoundException, InterruptedException, IOException {
     
+
     System.out.println("Starting Cat server...");
     port(8080);
 
@@ -164,7 +168,9 @@ public class Cat extends Frontend {
         CallgraphRequest req = json.fromJson(_req.body(), CallgraphRequest.class);
         log("Generating call graph...");
 
-        // TODO: check req for errors (no files, no entry...)
+        if (req.entryPackage.isEmpty() || req.entryMethod.isEmpty() || req.files.length == 0) {
+          return "{ \"status\": \"error\", \"message\": \"Request must contain an entry point and a list of files to analyze.\" }";
+        }
 
         Cat cat = new Cat();
 
@@ -174,11 +180,10 @@ public class Cat extends Frontend {
         root.entryPointMethod = req.entryMethod;
         root.entryPointPackage = req.entryPackage;
 
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(baos);
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        root.writeCallGraph(out);
 
-        root.callGraph2JSON(out, true);
-        return baos.toString();
+        return out.toString();
       } catch (Exception e) {
         System.out.println(e);
         return "{ \"status\": \"error\", \"message\": \"" + e.toString() + "\" }";

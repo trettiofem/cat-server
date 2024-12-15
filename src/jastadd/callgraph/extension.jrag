@@ -41,30 +41,6 @@ aspect AllMethods {
   eq CompilationUnit.getChild().enclosingCompilationUnit() = this;
   eq Program.getChild().enclosingCompilationUnit() = null;
 
-public
-  String Program.allMethodsToJson() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("{\n");
-    sb.append("  \"methods\": [\n");
-    int methodCount = 0;
-    for (InvocationTarget m : allMethods()) {
-      sb.append("    {\n");
-      sb.append("      \"fullName\": \"" + m.targetSignature() + "\",\n");
-      sb.append("      \"name\": \"" + m.methodName() + "\",\n");
-      sb.append("      \"file\": \"" + m.enclosingCompilationUnit().pathName() +
-                "\",\n");
-      sb.append("      \"lineStart\": " + m.lineStart() + ",\n");
-      sb.append("      \"packageName\": \"" + m.packageName() + "\"\n");
-      sb.append("    }");
-      if (++methodCount < allMethods().size()) {
-        sb.append(",\n");
-      }
-    }
-    sb.append("\n  ]\n");
-    sb.append("}\n");
-    return sb.toString();
-  }
-
   syn String InvocationTarget.methodName() {
     String res = "";
     try {

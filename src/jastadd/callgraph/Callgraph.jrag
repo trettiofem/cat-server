@@ -32,8 +32,9 @@ import java.util.LinkedHashSet;
 import org.extendj.Cat;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import com.google.gson.stream.JsonWriter;
 
-aspect CallGraphWithRAGS {
+aspect CallGraph {
   coll Set<InvocationTarget> InvocationTarget
       .backwardCG()[new LinkedHashSet<>()] with add root Program;
   InvocationTarget contributes getContribution() to InvocationTarget.backwardCG() for each cg();
@@ -281,9 +282,14 @@ public
       this._method = _method;
     }
 
-    // TODO: remove
-    public String getJSON() {
-      return "{ \"package\": \"" + _package + "\", \"class\": \"" + _class + "\", \"method\": \"" + _method + "\" }";
+    public void writeIdentifier(JsonWriter writer) {
+      try {
+        writer.beginObject();
+        writer.name("package").value(this._package);
+        writer.name("class").value(this._class);
+        writer.name("method").value(this._method);
+        writer.endObject();
+      } catch (IOException e) {}
     }
   }
 
