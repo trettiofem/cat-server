@@ -1,0 +1,321 @@
+{
+    "status": "ok",
+    "data": {
+        "nodes": [
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "CHAPaper1",
+                    "method": "main()"
+                },
+                "type": "void",
+                "path": "testfiles/CHAPaper1.java",
+                "line": 7,
+                "params": [],
+                "kind": "entry-point",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "H",
+                    "method": "H()"
+                },
+                "type": "",
+                "path": "testfiles/CHAPaper1.java",
+                "line": 0,
+                "params": [],
+                "kind": "constructor",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "F",
+                    "method": "F()"
+                },
+                "type": "",
+                "path": "testfiles/CHAPaper1.java",
+                "line": 0,
+                "params": [],
+                "kind": "constructor",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "C",
+                    "method": "C()"
+                },
+                "type": "",
+                "path": "testfiles/CHAPaper1.java",
+                "line": 0,
+                "params": [],
+                "kind": "constructor",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "A",
+                    "method": "A()"
+                },
+                "type": "",
+                "path": "testfiles/CHAPaper1.java",
+                "line": 0,
+                "params": [],
+                "kind": "constructor",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "java.lang",
+                    "class": "Object",
+                    "method": "<init>()"
+                },
+                "type": "",
+                "path": "jrt:/java.base/java/lang/Object.class",
+                "line": 0,
+                "params": [],
+                "kind": "constructor",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "C",
+                    "method": "clinit<>"
+                },
+                "type": "",
+                "path": "testfiles/CHAPaper1.java",
+                "line": 36,
+                "params": [],
+                "kind": "static-initializer",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "G",
+                    "method": "G()"
+                },
+                "type": "",
+                "path": "testfiles/CHAPaper1.java",
+                "line": 0,
+                "params": [],
+                "kind": "constructor",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "C",
+                    "method": "m()"
+                },
+                "type": "void",
+                "path": "testfiles/CHAPaper1.java",
+                "line": 37,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "E",
+                    "method": "m()"
+                },
+                "type": "void",
+                "path": "testfiles/CHAPaper1.java",
+                "line": 27,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "A",
+                    "method": "m()"
+                },
+                "type": "void",
+                "path": "testfiles/CHAPaper1.java",
+                "line": 49,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "B",
+                    "method": "m()"
+                },
+                "type": "void",
+                "path": "testfiles/CHAPaper1.java",
+                "line": 43,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            }
+        ],
+        "edges": [
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "CHAPaper1",
+                    "method": "main()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "H",
+                    "method": "H()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "CHAPaper1",
+                    "method": "main()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "C",
+                    "method": "m()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "CHAPaper1",
+                    "method": "main()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "E",
+                    "method": "m()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "CHAPaper1",
+                    "method": "main()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "C",
+                    "method": "C()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "CHAPaper1",
+                    "method": "main()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "A",
+                    "method": "m()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "CHAPaper1",
+                    "method": "main()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "B",
+                    "method": "m()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "H",
+                    "method": "H()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "F",
+                    "method": "F()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "F",
+                    "method": "F()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "C",
+                    "method": "C()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "C",
+                    "method": "C()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "A",
+                    "method": "A()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "C",
+                    "method": "C()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "C",
+                    "method": "clinit<>"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "A",
+                    "method": "A()"
+                },
+                "target": {
+                    "package": "java.lang",
+                    "class": "Object",
+                    "method": "<init>()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "C",
+                    "method": "clinit<>"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "G",
+                    "method": "G()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "G",
+                    "method": "G()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "F",
+                    "method": "F()"
+                }
+            }
+        ]
+    }
+}

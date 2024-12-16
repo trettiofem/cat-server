@@ -1,0 +1,97 @@
+{
+    "status": "ok",
+    "data": {
+        "nodes": [
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "FourComponents",
+                    "method": "foo()"
+                },
+                "type": "void",
+                "path": "testfiles/FourComponents.java",
+                "line": 7,
+                "params": [],
+                "kind": "entry-point",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "FourComponents",
+                    "method": "bar()"
+                },
+                "type": "void",
+                "path": "testfiles/FourComponents.java",
+                "line": 9,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "FourComponents",
+                    "method": "baz()"
+                },
+                "type": "void",
+                "path": "testfiles/FourComponents.java",
+                "line": 11,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "FourComponents",
+                    "method": "zzz()"
+                },
+                "type": "void",
+                "path": "testfiles/FourComponents.java",
+                "line": 12,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            }
+        ],
+        "edges": [
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "FourComponents",
+                    "method": "foo()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "FourComponents",
+                    "method": "bar()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "FourComponents",
+                    "method": "bar()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "FourComponents",
+                    "method": "baz()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "FourComponents",
+                    "method": "baz()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "FourComponents",
+                    "method": "zzz()"
+                }
+            }
+        ]
+    }
+}

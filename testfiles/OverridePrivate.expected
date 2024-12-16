@@ -1,0 +1,139 @@
+{
+    "status": "ok",
+    "data": {
+        "nodes": [
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OverridePrivate",
+                    "method": "main(String[])"
+                },
+                "type": "void",
+                "path": "testfiles/OverridePrivate.java",
+                "line": 6,
+                "params": [
+                    {
+                        "id": "args",
+                        "type": "String[]"
+                    }
+                ],
+                "kind": "entry-point",
+                "visibility": "static"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "Root",
+                    "method": "Root()"
+                },
+                "type": "",
+                "path": "testfiles/OverridePrivate.java",
+                "line": 0,
+                "params": [],
+                "kind": "constructor",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "java.lang",
+                    "class": "Object",
+                    "method": "<init>()"
+                },
+                "type": "",
+                "path": "jrt:/java.base/java/lang/Object.class",
+                "line": 0,
+                "params": [],
+                "kind": "constructor",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "Root",
+                    "method": "a2()"
+                },
+                "type": "void",
+                "path": "testfiles/OverridePrivate.java",
+                "line": 14,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "Root",
+                    "method": "a1()"
+                },
+                "type": "void",
+                "path": "testfiles/OverridePrivate.java",
+                "line": 13,
+                "params": [],
+                "kind": "method",
+                "visibility": "private"
+            }
+        ],
+        "edges": [
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OverridePrivate",
+                    "method": "main(String[])"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "Root",
+                    "method": "Root()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OverridePrivate",
+                    "method": "main(String[])"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "Root",
+                    "method": "a2()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "Root",
+                    "method": "Root()"
+                },
+                "target": {
+                    "package": "java.lang",
+                    "class": "Object",
+                    "method": "<init>()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "Root",
+                    "method": "a2()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "Root",
+                    "method": "a1()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "Root",
+                    "method": "a1()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "Root",
+                    "method": "a2()"
+                }
+            }
+        ]
+    }
+}

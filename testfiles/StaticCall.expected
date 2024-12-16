@@ -1,0 +1,47 @@
+{
+    "status": "ok",
+    "data": {
+        "nodes": [
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "Test2",
+                    "method": "foo()"
+                },
+                "type": "void",
+                "path": "testfiles/StaticCall.java",
+                "line": 12,
+                "params": [],
+                "kind": "entry-point",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "Test",
+                    "method": "foo()"
+                },
+                "type": "void",
+                "path": "testfiles/StaticCall.java",
+                "line": 7,
+                "params": [],
+                "kind": "method",
+                "visibility": "static"
+            }
+        ],
+        "edges": [
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "Test2",
+                    "method": "foo()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "Test",
+                    "method": "foo()"
+                }
+            }
+        ]
+    }
+}

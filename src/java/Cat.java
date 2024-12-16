@@ -85,7 +85,7 @@ public class Cat extends Frontend {
   private String[] setEnv(String[] args) throws FileNotFoundException {
     if (args.length < 1) {
       System.err.println("You must specify a source file on the command line!");
-      printOptionsUsage();
+      printHelp();
     }
 
     ArrayList<String> FEOptions = new ArrayList<>();
@@ -129,7 +129,7 @@ public class Cat extends Frontend {
         break;
       default:
 
-        printOptionsUsage();
+        printHelp();
         break;
       }
     }
@@ -155,11 +155,8 @@ public class Cat extends Frontend {
    * Entry point for the Java checker.
    * @param args command-line arguments
    */
-  public static void main(String[] args)
-      throws FileNotFoundException, InterruptedException, IOException {
-    
-
-    System.out.println("Starting Cat server...");
+  public static void main(String[] args) throws FileNotFoundException, InterruptedException, IOException {
+    System.out.println("Starting cat-server...");
     port(8080);
 
     post("/callgraph", (_req, res) -> {
@@ -200,7 +197,9 @@ public class Cat extends Frontend {
   /**
    * Initialize the Java checker.
    */
-  public Cat() { super("Cat Server", ExtendJVersion.getVersion()); }
+  public Cat() {
+    super("Cat Server", ExtendJVersion.getVersion());
+  }
 
   /**
    * @param args command-line arguments
@@ -218,8 +217,7 @@ public class Cat extends Frontend {
    * @return 0 on success, 1 on error, 2 on configuration error, 3 on system
    */
   public int run(String args[]) {
-    return run(args, Program.defaultBytecodeReader(),
-               Program.defaultJavaParser());
+    return run(args, Program.defaultBytecodeReader(), Program.defaultJavaParser());
   }
 
   /**
@@ -243,21 +241,12 @@ public class Cat extends Frontend {
     System.out.println("\u001B[33m[INFO]\u001B[0m: " + message);
   }
 
-  private void printOptionsUsage() {
-    if (vscode)
-      System.exit(0);
-    System.out.println("Usage: java -jar cat.jar [options] <source_files>");
+  private void printHelp() {
+    System.out.println("Usage: java -jar cat.jar [options] [<source files>]");
     System.out.println("Options:");
-    System.out.println(
-        "[MANDATORY]  -entryPoint <package> <method> Specify the entry point package and method");
-    System.out.println(
-        "  -attributesOnly   Enable consideration of attributes only. Methods will be discarded.");
-    System.out.println("  -classpath <path> Specify the classpath");
-    System.out.println("  -visualise        Visualize the call graph");
-    System.out.println(
-        "  -o <path>         Save call graph to a JSON file at the specified path");
-    System.out.println(
-        "  -mergeNames       Enable name merging for attributes. This option will discards type information");
-    System.exit(1);
+    System.out.println("  --help                         Print help.");
+    System.out.println("  --json      <path>             Save call graph to a JSON file at the specified path.");
+    System.out.println("  --entry     <package> <method> Specify the entry point package and method.");
+    System.out.println("  --classpath <path>             Specify the classpath.");
   }
 }

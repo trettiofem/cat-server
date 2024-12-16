@@ -1,0 +1,109 @@
+{
+    "status": "ok",
+    "data": {
+        "nodes": [
+            {
+                "id": {
+                    "package": "org.extendj.sccid",
+                    "class": "Cyclic",
+                    "method": "foo()"
+                },
+                "type": "void",
+                "path": "testfiles/Cyclic.java",
+                "line": 7,
+                "params": [],
+                "kind": "entry-point",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.sccid",
+                    "class": "Cyclic",
+                    "method": "bar()"
+                },
+                "type": "void",
+                "path": "testfiles/Cyclic.java",
+                "line": 9,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.sccid",
+                    "class": "Cyclic",
+                    "method": "baz()"
+                },
+                "type": "void",
+                "path": "testfiles/Cyclic.java",
+                "line": 11,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.sccid",
+                    "class": "Cyclic",
+                    "method": "zzz()"
+                },
+                "type": "void",
+                "path": "testfiles/Cyclic.java",
+                "line": 12,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            }
+        ],
+        "edges": [
+            {
+                "source": {
+                    "package": "org.extendj.sccid",
+                    "class": "Cyclic",
+                    "method": "foo()"
+                },
+                "target": {
+                    "package": "org.extendj.sccid",
+                    "class": "Cyclic",
+                    "method": "bar()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.sccid",
+                    "class": "Cyclic",
+                    "method": "bar()"
+                },
+                "target": {
+                    "package": "org.extendj.sccid",
+                    "class": "Cyclic",
+                    "method": "baz()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.sccid",
+                    "class": "Cyclic",
+                    "method": "baz()"
+                },
+                "target": {
+                    "package": "org.extendj.sccid",
+                    "class": "Cyclic",
+                    "method": "zzz()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.sccid",
+                    "class": "Cyclic",
+                    "method": "zzz()"
+                },
+                "target": {
+                    "package": "org.extendj.sccid",
+                    "class": "Cyclic",
+                    "method": "foo()"
+                }
+            }
+        ]
+    }
+}

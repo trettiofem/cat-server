@@ -1,0 +1,34 @@
+{
+    "status": "ok",
+    "data": {
+        "nodes": [
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "SelfRecursion",
+                    "method": "foo()"
+                },
+                "type": "void",
+                "path": "testfiles/SelfRecursion.java",
+                "line": 6,
+                "params": [],
+                "kind": "entry-point",
+                "visibility": "public"
+            }
+        ],
+        "edges": [
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "SelfRecursion",
+                    "method": "foo()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "SelfRecursion",
+                    "method": "foo()"
+                }
+            }
+        ]
+    }
+}

@@ -1,4 +1,4 @@
-public class Shelter {
+public class Zoo {
     public static void main(String[] args) {
         Animal fish = new Fish();
         Animal dog = new Dog();

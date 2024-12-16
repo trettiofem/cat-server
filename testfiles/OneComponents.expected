@@ -1,0 +1,121 @@
+{
+    "status": "ok",
+    "data": {
+        "nodes": [
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OneComponents",
+                    "method": "foo()"
+                },
+                "type": "void",
+                "path": "testfiles/OneComponents.java",
+                "line": 7,
+                "params": [],
+                "kind": "entry-point",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OneComponents",
+                    "method": "bar()"
+                },
+                "type": "void",
+                "path": "testfiles/OneComponents.java",
+                "line": 9,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OneComponents",
+                    "method": "baz()"
+                },
+                "type": "void",
+                "path": "testfiles/OneComponents.java",
+                "line": 14,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OneComponents",
+                    "method": "zzz()"
+                },
+                "type": "void",
+                "path": "testfiles/OneComponents.java",
+                "line": 15,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            }
+        ],
+        "edges": [
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OneComponents",
+                    "method": "foo()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OneComponents",
+                    "method": "bar()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OneComponents",
+                    "method": "bar()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OneComponents",
+                    "method": "foo()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OneComponents",
+                    "method": "bar()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OneComponents",
+                    "method": "baz()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OneComponents",
+                    "method": "baz()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OneComponents",
+                    "method": "zzz()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OneComponents",
+                    "method": "zzz()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "OneComponents",
+                    "method": "bar()"
+                }
+            }
+        ]
+    }
+}

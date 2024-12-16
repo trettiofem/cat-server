@@ -1,0 +1,109 @@
+{
+    "status": "ok",
+    "data": {
+        "nodes": [
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "ThreeComponents",
+                    "method": "foo()"
+                },
+                "type": "void",
+                "path": "testfiles/ThreeComponents.java",
+                "line": 7,
+                "params": [],
+                "kind": "entry-point",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "ThreeComponents",
+                    "method": "bar()"
+                },
+                "type": "void",
+                "path": "testfiles/ThreeComponents.java",
+                "line": 9,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "ThreeComponents",
+                    "method": "baz()"
+                },
+                "type": "void",
+                "path": "testfiles/ThreeComponents.java",
+                "line": 14,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "ThreeComponents",
+                    "method": "zzz()"
+                },
+                "type": "void",
+                "path": "testfiles/ThreeComponents.java",
+                "line": 15,
+                "params": [],
+                "kind": "method",
+                "visibility": "public"
+            }
+        ],
+        "edges": [
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "ThreeComponents",
+                    "method": "foo()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "ThreeComponents",
+                    "method": "bar()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "ThreeComponents",
+                    "method": "bar()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "ThreeComponents",
+                    "method": "foo()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "ThreeComponents",
+                    "method": "bar()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "ThreeComponents",
+                    "method": "baz()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "ThreeComponents",
+                    "method": "baz()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "ThreeComponents",
+                    "method": "zzz()"
+                }
+            }
+        ]
+    }
+}

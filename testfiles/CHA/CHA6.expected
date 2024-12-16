@@ -1,4 +1,0 @@
-Box :> [MyBox]
-Box <: []
-MyBox :> []
-MyBox <: [Box]

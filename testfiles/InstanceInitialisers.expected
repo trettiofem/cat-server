@@ -1,0 +1,181 @@
+{
+    "status": "ok",
+    "data": {
+        "nodes": [
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "InstanceInitialisers",
+                    "method": "main(String[])"
+                },
+                "type": "void",
+                "path": "testfiles/InstanceInitialisers.java",
+                "line": 16,
+                "params": [
+                    {
+                        "id": "args",
+                        "type": "String[]"
+                    }
+                ],
+                "kind": "entry-point",
+                "visibility": "static"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "A",
+                    "method": "A()"
+                },
+                "type": "",
+                "path": "testfiles/InstanceInitialisers.java",
+                "line": 5,
+                "params": [],
+                "kind": "constructor",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "T",
+                    "method": "T()"
+                },
+                "type": "",
+                "path": "testfiles/InstanceInitialisers.java",
+                "line": 12,
+                "params": [],
+                "kind": "constructor",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "java.lang",
+                    "class": "Object",
+                    "method": "<init>()"
+                },
+                "type": "",
+                "path": "jrt:/java.base/java/lang/Object.class",
+                "line": 0,
+                "params": [],
+                "kind": "constructor",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "java.io",
+                    "class": "PrintStream",
+                    "method": "println(java.lang.String)"
+                },
+                "type": "void",
+                "path": "jrt:/java.base/java/io/PrintStream.class",
+                "line": 0,
+                "params": [
+                    {
+                        "id": "p0",
+                        "type": "String"
+                    }
+                ],
+                "kind": "method",
+                "visibility": "public"
+            },
+            {
+                "id": {
+                    "package": "org.extendj.callgraph",
+                    "class": "T",
+                    "method": "init<>"
+                },
+                "type": "",
+                "path": "testfiles/InstanceInitialisers.java",
+                "line": 9,
+                "params": [],
+                "kind": "instance-initializer",
+                "visibility": "public"
+            }
+        ],
+        "edges": [
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "InstanceInitialisers",
+                    "method": "main(String[])"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "A",
+                    "method": "A()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "A",
+                    "method": "A()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "T",
+                    "method": "T()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "A",
+                    "method": "A()"
+                },
+                "target": {
+                    "package": "java.io",
+                    "class": "PrintStream",
+                    "method": "println(java.lang.String)"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "T",
+                    "method": "T()"
+                },
+                "target": {
+                    "package": "java.lang",
+                    "class": "Object",
+                    "method": "<init>()"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "T",
+                    "method": "T()"
+                },
+                "target": {
+                    "package": "java.io",
+                    "class": "PrintStream",
+                    "method": "println(java.lang.String)"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "T",
+                    "method": "T()"
+                },
+                "target": {
+                    "package": "org.extendj.callgraph",
+                    "class": "T",
+                    "method": "init<>"
+                }
+            },
+            {
+                "source": {
+                    "package": "org.extendj.callgraph",
+                    "class": "T",
+                    "method": "init<>"
+                },
+                "target": {
+                    "package": "java.io",
+                    "class": "PrintStream",
+                    "method": "println(java.lang.String)"
+                }
+            }
+        ]
+    }
+}

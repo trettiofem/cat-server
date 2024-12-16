@@ -54,36 +54,30 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class CallGraphRAGs {
-  public static final File TEST_DIRECTORY =
-      new File("testfiles/callgraphwithrags");
+public class CallGraphTest {
+  public static final File TEST_DIRECTORY = new File("testfiles");
   private final String filename;
   private String packageName;
   private String methodName;
-  public CallGraphRAGs(String testFile) { filename = testFile; }
+  public CallGraphTest(String testFile) { filename = testFile; }
 
   @Test
   public void runTest() throws Exception {
     // Options are encoded in the file. Extract the from there.
-
     PrintStream out = System.out;
-    try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
-         PrintStream outStream = new PrintStream(baos)) {
+
+    try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
       String[] args = {filename};
-      Cat jChecker = new Cat();
-      extractOptionsFromTestFile(jChecker.getEntryPoint());
-      int execCode = jChecker.run(args);
-      if (1 == execCode) {
+      Cat cat = new Cat();
+      extractOptionsFromTestFile(cat.getEntryPoint());
+      int execCode = cat.run(args);
+
+      if (execCode == 1) {
         Assert.fail("Compilation errors found " + execCode);
       }
 
-      Program program = jChecker.getEntryPoint();
-      StringBuilder sb = new StringBuilder();
-      InvocationTarget entryPoint = program.getTarget(program.entryPointPackage,
-                                                      program.entryPointMethod);
-      Set<InvocationTarget> visited = new LinkedHashSet<>();
-      traverseCallGraph(entryPoint, visited, sb);
-      outStream.println(sb.toString());
+      Program program = cat.getEntryPoint();
+      program.writeCallGraph(baos);
 
       UtilTest.compareOutput(
           baos.toString(), new File(UtilTest.changeExtension(filename, ".out")),
@@ -91,34 +85,6 @@ public class CallGraphRAGs {
 
     } finally {
       System.setOut(out);
-    }
-  }
-
-  public void traverseCallGraph(InvocationTarget target,
-                                Set<InvocationTarget> visited,
-                                StringBuilder sb) {
-    if (visited.contains(target)) {
-      return;
-    }
-    visited.add(target);
-    if (!target.cg().isEmpty()) {
-      sb.append(target.targetSignature() + "->");
-    }
-    boolean first = true;
-    for (InvocationTarget callee : target.cg()) {
-      if (!first) {
-        sb.append(",");
-      } else {
-        first = false;
-      }
-      sb.append(callee.targetSignature());
-    }
-    if (!target.cg().isEmpty()) {
-      sb.append("\n");
-    }
-
-    for (InvocationTarget callee : target.cg()) {
-      traverseCallGraph(callee, visited, sb);
     }
   }
 
