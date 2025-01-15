@@ -16,7 +16,7 @@
 
 ## Usage
 
-After building (`./gradlew jar`), start the server by running `java -jar cat.jar`. The server is now up and running, and ready to accept incoming requests for call graph analysis!
+After building (`./gradlew jar`), start the server by running `java -jar cat.jar`. The server is now up and running, and ready to accept incoming requests for call graph analysis.
 
 ## License
-`cat-server` is released under the BSD 3-Clause License.
+`cat-server` is released under the BSD 2-Clause License.
